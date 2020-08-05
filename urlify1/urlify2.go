@@ -2,31 +2,24 @@ package main
 
 import (
 	"fmt"
-	"unicode/utf8"
 )
 
 func main() {
-	fmt.Printf(uRLify("katarina pepo"))
+	fmt.Printf(uRLify("D D"))
 }
 func uRLify(str string) (URLifyString string) {
 	newArray := make([]rune, 0)
-	percentageRune, _ := utf8.DecodeRuneInString("%")
-	twoRune, _ := utf8.DecodeRuneInString("2")
-	zeroRune, _ := utf8.DecodeRuneInString("0")
-	//fmt.Printf("%d %d %d\n",percentageRune, twoRune,zeroRune) funciona
-	for i, rune := range str {
-		//fmt.Printf("%v %c \n", i, rune)funciona
-		spaceRune, _ := utf8.DecodeRuneInString(" ")
-		fmt.Printf("\n %d",spaceRune)
-		if rune == spaceRune {
-			fmt.Printf("ESPACIO AT INDEX %d\n", i)
-			newArray = append(newArray, percentageRune)
-			newArray = append(newArray, twoRune)
-			newArray = append(newArray, zeroRune)
+	for i := 0; i < len(str); i++ {
+		spaceRune:= rune(' ')
+		runa := rune(str[i])
+		if runa == spaceRune {
+			newArray = append(newArray, rune('%'))
+			newArray = append(newArray, rune('2'))
+			newArray = append(newArray, rune('0'))
+			i = i + 2
 		} else {
-			newArray = append(newArray, rune)
+			newArray = append(newArray, runa)
 		}
 	}
-	fmt.Printf("%d \n",newArray)
 	return string(newArray)
 }
