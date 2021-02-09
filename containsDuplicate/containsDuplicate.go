@@ -12,11 +12,10 @@ func main() {
 }
 
 func containsDuplicate(nums []int) bool {
-	//sort and compare
 	numbers := map[int]string{}
 	for _, n := range nums {
 		if _, duplicate := numbers[n]; duplicate {
-			return duplicate
+			return duplicate //true
 		}
 		numbers[n] = "pepito"
 	}
